@@ -11,9 +11,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
-  
+
 //Create Mongo Database then Config
-const db = require('./config/keys').mongoURI; 
+const db = process.env.MONGODB_URI || require('./config/keys').mongoURI; 
 
 //Connect to Mongo
 mongoose.connect(db)
