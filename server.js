@@ -7,7 +7,8 @@ const app = express();
 
 // Bodyparser Middleware: Allows app to read JSON
 app.use(express.json());
-app.use('/', express.static("/client/build/"));
+
+app.use('/', express.static("client/build/"));
 
 //Create Mongo Database then Config
 const db = process.env.MONGODB_URI || require('./config/keys').mongoURI; 
