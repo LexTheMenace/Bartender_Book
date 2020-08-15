@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 60%;
   margin: auto;
   border: 3px rgb(202, 202, 202) solid;
  padding: 10px;
@@ -57,6 +57,7 @@ p {
   .container {
     border: none;
     /* background-image: linear-gradient(black, rgb(150, 150, 150)); */
+    width: 90%;
   
   }
   

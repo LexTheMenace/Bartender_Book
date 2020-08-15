@@ -10,7 +10,7 @@ const Drink = require('../../models/Drink');
 router.get('/', (req, res) => {
    
     Drink.find()
-        .sort({ date: -1 })
+        .sort({ dateAdded: -1 })
         .then(drinks => res.json(drinks))
 });
 
