@@ -9,8 +9,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "build": "cd client && npm run build",
-    "dev": "concurrently \" npm run server\" \" npm run client\"",
-    "heroku-postbuild": "npm run build"
+    "dev": "concurrently \" npm run server\" \" npm run client\""
   },
   "author": "Lex Pryor",
   "license": "MIT",
