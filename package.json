@@ -4,12 +4,13 @@
   "description": "Recreating Student Project in React",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "install": "cd client && npm install",
     "start": "node server.js",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "build": "cd client && npm run build",
-    "dev": "concurrently \" npm run server\" \" npm run client\""
+    "dev": "concurrently \" npm run server\" \" npm run client\"",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Lex Pryor",
   "license": "MIT",
