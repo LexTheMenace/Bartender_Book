@@ -8,10 +8,12 @@ const DrinkSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    org_id: Number,
+    drink_id: Number,
     ingredients: [
-        {item: String, amount: String}
-    ]
+        {item: String, amt: String}
+    ],
+    instructions: String,
+    glass: String
 })
 
 module.exports = Drink = mongoose.model('drink', DrinkSchema)
