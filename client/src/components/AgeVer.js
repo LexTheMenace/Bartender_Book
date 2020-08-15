@@ -13,7 +13,7 @@ class AgeVer extends Component {
         if (this.state.legal) {
             window.location.href = "/#/mix";
         } else {
-            console.log("Sorry");
+          document.getElementById('alert').innerHTML = 'Sorry! You aren\'t old enough to drink!'
         }
     };
 
@@ -27,8 +27,8 @@ class AgeVer extends Component {
                     <input type="submit" value="Submit"></input>
                 </form>
 
-                <div style={{display: 'none'}}>
-                    <h1 id='alert'> Sorry! You aren't old enough to drink! </h1>
+                <div >
+                    <h1 id='alert'></h1>
                 </div>
             </div>
         )

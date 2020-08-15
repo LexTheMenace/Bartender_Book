@@ -68,12 +68,12 @@ class Mix extends Component {
             <div>
                 <form onSubmit={this.onSubmit}>
                     <h5>Search By Liquor/ Ingredient:</h5>
-                    <input type='text' name='search' value={this.state.search} onChange={this.onChange}></input> <br />
-                    <button type='submit' value='Submit' style={{ width: '10%' }}><img style={{ width: '100px' }} src='https://mattsko.files.wordpress.com/2013/07/dancing-cocktail-shaker.gif' /></button>
+                    <input type='text' name='search' value={this.state.search} onChange={this.onChange}></input> 
+                    <button type='submit' value='Submit' style={{ width: '10%', margin: '10px', fontSize: '24px' }}> SEARCH </button>
                 </form>
                 <form onSubmit={this.random}>
-                    <h5> "Surpise Me"! </h5>
-                    <button type='submit' value='Submit' style={{ width: '10%' }}><img style={{ width: '100px' }} src='https://mattsko.files.wordpress.com/2013/07/dancing-cocktail-shaker.gif' /></button>
+                    <h5>Random Cocktail</h5>
+                    <button type='submit' value='Submit' style={{ width: '10%' }}> <h5> "Surpise Me"! </h5> </button>
                 </form>
             </div>
 
