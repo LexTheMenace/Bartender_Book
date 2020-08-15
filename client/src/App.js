@@ -19,7 +19,7 @@ function App() {
      <Route exact path='/'>
        <AgeVer/>
      </Route>
-        
+
       </div>
     </Router>
   );

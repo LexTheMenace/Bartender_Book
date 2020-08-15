@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const path = require('path')
 const drinks = require('./routes/api/drinks')
 
 const app = express();
@@ -9,7 +9,9 @@ const app = express();
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+  console.log("hit");
+    //app.use(express.static("client/build/"));
+    app.use("/", express.static(path.join(__dirname, "./client/build/")));
   }
 
 //Create Mongo Database then Config
