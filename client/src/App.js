@@ -5,6 +5,7 @@ import AgeVer from './components/AgeVer';
 import { HashRouter as Router, Route } from 'react-router-dom'
 import Mix from './components/Mix';
 import Saved from './components/Saved';
+
 function App() {
   return (
     <Router>
@@ -19,7 +20,6 @@ function App() {
      <Route exact path='/'>
        <AgeVer/>
      </Route>
-
       </div>
     </Router>
   );

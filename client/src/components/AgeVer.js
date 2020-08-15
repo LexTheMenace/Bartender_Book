@@ -11,7 +11,7 @@ class AgeVer extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         if (this.state.legal) {
-            window.location.href = "/mix";
+            window.location.href = "/#/mix";
         } else {
             console.log("Sorry");
         }

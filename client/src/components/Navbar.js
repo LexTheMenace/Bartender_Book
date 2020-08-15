@@ -20,8 +20,8 @@ export default function Navbar() {
     return (
         <header style={headerStyle}>
             <h1>The Bartender Book </h1>
-       <Link style={linkStyle} to='/mix'> Mix </Link> ||
-            <Link style={linkStyle} to='/Saved'> Saved </Link> 
+       <Link style={linkStyle} to='/#/mix'> Mix </Link> ||
+            <Link style={linkStyle} to='/#/saved'> Saved </Link> 
         </header>
     )
 }
