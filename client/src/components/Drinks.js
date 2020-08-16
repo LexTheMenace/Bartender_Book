@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Drink from './Drink'
+import { Consumer } from '../context';
 
-export default function Drinks(props) {
-const {results, onClick} = props
-console.log(props);
-    if (results.length > 1) {
+export default class Drinks extends Component {
+
+    render() {
         return (
-            <React.Fragment>
-                <button style={{padding: '15px', background: 'black', color: 'white'}} onClick={onClick}>Re-Mix?</button>
-                <div className='container'>
-                    {results.map(drink =>
-                        <Drink key={results.drinkId} drink={drink} />
-                    )}
-                </div>
-            </React.Fragment>
-        )
-    } else {
-        return (
-            <React.Fragment>
-                <button style={{padding: '10px', background: 'black', color: 'white', border: '1px solid gray', margin: '10px'}} onClick={onClick}>Re-Mix?</button>
-                <div className='container'>
-                    <Drink key={results.drinkId} drink={results} />
-                </div>
-            </React.Fragment>
+            <Consumer>
+                {value => {
+                    const { drinks, heading } = value
+                    const { strInstructions, strDrink, strDrinkThumb, strGlass, idDrink } = drinks
+                    if (drinks === undefined || drinks.length === 0) {
+                        return <h1 style={{display: 'none'}}>Nothing to Show.</h1>
+                    }
+                    else {
+                        return (
+                            <div>
+                             <h2>{heading}</h2> <br/>
+                            <div className='container'>
+                            <React.Fragment>
+                                {drinks.map(drink => (
+                                    <Drink key={drink.idDrink} drink={drink} />
+                                ))}
+                            </React.Fragment>
+                            </div>
+                            </div>
+                        )
+                    }
+                }}
+            </Consumer>
         )
     }
-
 }

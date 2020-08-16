@@ -1,27 +1,33 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import Navbar from './components/layout/Navbar';
 import AgeVer from './components/AgeVer';
 import { HashRouter as Router, Route } from 'react-router-dom'
-import Mix from './components/Mix';
 import Saved from './components/Saved';
+import { Provider } from './context';
+import Index from './components/layout';
+import ScrollTop from './components/layout/ScrollTop'
 
 function App() {
   return (
-    <Router>
-     <Navbar/> 
-     <div > 
-     <Route path='/mix'>
-     <Mix/>
-     </Route>
-     <Route path='/saved'>
-     <Saved/>
-     </Route>
-     <Route exact path='/'>
-       <AgeVer/>
-     </Route>
-      </div>
-    </Router>
+    <Provider>
+      <Router>
+        <Navbar />
+        <div >
+          <ScrollTop/>
+          <Route path='/mix'>
+            <Index/>
+          </Route>
+          <Route path='/saved'>
+            <Saved />
+          </Route>
+          <Route exact path='/'>
+            <AgeVer />
+          </Route>
+        </div>
+      </Router>
+    </Provider>
+
   );
 }
 

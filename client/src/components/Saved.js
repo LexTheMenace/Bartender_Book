@@ -44,7 +44,7 @@ export default class Saved extends Component {
                     const { name, thumbnail, ingredients, glass, instructions, _id } = drink
     
                     return(
-                        <div className='drinkCard' >
+                        <div key={_id} className='drinkCard' >
                             <div>
                                 <h2>{name}</h2>
                                 <img style={{ width: '200px', marginTop: '50px', marginBottom: '50px'  }} src={thumbnail} alt={name} />
@@ -53,7 +53,7 @@ export default class Saved extends Component {
                             <div>
                                 <h4>Ingredients</h4>
                                 {ingredients.map(item => {
-                                    if (!item.amt){ return <div> {item.item} </div> } else {
+                                    if (!item.amt){ return <div key={item._id}> {item.item} </div> } else {
                                         return <div key={item._id}><span >{item.item}</span> : <span > {item.amt}</span></div>
                                     }
                                 })} 
