@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+require('dotenv').config()
 const drinks = require('./routes/api/drinks')
-
 const app = express();
 
 // Bodyparser Middleware: Allows app to read JSON
@@ -13,7 +12,7 @@ if (process.env.NODE_ENV === "production") {
   }
 
 //Create Mongo Database then Config
-const db = process.env.MONGODB_URI || require('./config/keys').mongoURI; 
+const db = process.env.MONGO_URI
 
 //Connect to Mongo
 mongoose.connect(db)
