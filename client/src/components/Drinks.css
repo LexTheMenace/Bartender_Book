@@ -1,0 +1,25 @@
+.drinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.drinks__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+
+@media only screen and (max-width: 980px) {
+   
+    .drinks__container {
+        grid-template-columns: 1fr 1fr ;
+    }
+  }
+  @media only screen and (max-width: 550px) {
+
+    .drinks__container {
+        grid-template-columns: 1fr;
+    }
+  }
+  

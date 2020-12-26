@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Mix from '../Mix'
 import Drinks from '../Drinks'
+import SearchBar from '../SearchBar'
 
 const Index = () => {
         return (
             <React.Fragment>
-                <Mix/>
+                <SearchBar/>
+              {/*   <Mix/> */}
                 <Drinks/>
             </React.Fragment>
         )

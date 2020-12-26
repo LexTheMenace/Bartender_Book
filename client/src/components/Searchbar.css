@@ -1,0 +1,21 @@
+.searchBar {
+
+    display: flex;
+justify-content: center;
+}
+.searchBar__form{
+    display: flex;
+    flex-direction: column;
+    flex: .5;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchBar__input {
+    border: none;
+    border-radius: 33px;
+    outline-style: none;
+    padding: 0px 15px;
+
+}
+
