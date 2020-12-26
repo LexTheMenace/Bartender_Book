@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
 const drinks = require('./routes/api/drinks')
+
+require('dotenv').config();
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use('/', express.static("client/build/"));
 
 //Create Mongo Database then Config
-const db = process.env.MONGODB_URI || require('./config/keys').mongoURI; 
+const db = process.env.MONGODB_URI 
 
 //Connect to Mongo
 mongoose.connect(db)
