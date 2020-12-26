@@ -90,31 +90,6 @@ const Store = ({ children }) => {
     const handleSearch = (query) => {
         dispatch({ type: SEARCH_INGREDIENT, payload: query })
     };
-/* 
-    const removeDrink = (id) => {
-        dispatch({ type: REMOVE_DRINK, payload: id })
-    };
-
-
-    const handlePage = (value) => {
-        dispatch({ type: HANDLE_PAGE, payload: value })
-    };
-
-    const filterDrinks = (alcoholic) => {
-        dispatch({ type: FILTER_ALCOHOLIC, payload: alcoholic })
-    };
-
-    const filterCategory = (category) => {
-        dispatch({ type: FILTER_CATEGORY, payload: category })
-    };
-
-    const saveDrink = (id) => {
-        const drink = state.results.filter(drink => drink.drink_id === id);
-        let drinks = JSON.parse(localStorage.getItem('saved-drinks'));
-        if (!drinks) drinks = [];
-        drinks.push(drink[0]);
-        localStorage.setItem('saved-drinks', JSON.stringify(drinks));
-    }; */
 
     useEffect(() => {
         getDrinks(`${API_ENDPOINT}${state.query}`)
