@@ -1,38 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { VERIFY_AGE } from '../actions';
+import { useGlobalContext } from '../Store';
 
 
-class AgeVer extends Component {
-    state = {
-        legal: false
-    };
+const AgeVer = () => {
+    const { dispatch } = useGlobalContext();
+    const [ legal, setLegal ] = useState(false);
 
-    onChange = (e) => this.setState({ legal: !this.state.legal });
+    const onChange = (e) => setLegal(!legal);
 
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        if (this.state.legal) {
-            window.location.href = "/#/mix";
+        if (legal) {
+            dispatch({ type: VERIFY_AGE, payload: legal })
         } else {
-          document.getElementById('alert').innerHTML = 'Sorry! You aren\'t old enough to drink!'
+            console.log("Sorry");
+            const sorry = document.getElementById('underage')
         }
     };
 
-    render() {
         return (
             <div>
                 <h2 style={{ margin: '10px 0' }}> Are You 21 Or Older? </h2>
-                <form style={{ padding: '20px' }} onSubmit={ this.onSubmit }>
+                <form style={{ padding: '20px' }} onSubmit={onSubmit}>
 
-                    Yes! <input name='legal' type='checkbox' onChange={ this.onChange } value={ this.state.legal } /> <br/>
+                    Yes! <input name='legal' type='checkbox' onChange={onChange} value={legal} /> <br/>
                     <input type="submit" value="Submit"></input>
                 </form>
 
-                <div >
-                    <h1 id='alert'></h1>
+                <div id='underage' style={{ display: 'none' }}>
+                    <h1 id='alert'> Sorry! You aren't old enough to drink! </h1>
                 </div>
             </div>
         )
-    }
+    
 }
 
 export default AgeVer;
