@@ -10,17 +10,20 @@ import ScrollTop from './components/layout/ScrollTop'
 import { useGlobalContext } from './Store';
 
 function App() {
- const { legal } = useGlobalContext();
+//  const { legal } = useGlobalContext();
+const legal = true;
 
   return (
     <Provider>
       <Router>
         <Switch>
-{ !legal ? <Route exact path='/'>
+{ !legal ? <Route path='/'>
   <AgeVer/>
 </Route> :
         <div >
         <Navbar />
+        <div className='app'>
+
           <ScrollTop/>
           <Route path='/mix'>
           </Route>
@@ -30,6 +33,7 @@ function App() {
           <Route exact path='/'>
             <Index/>
           </Route>
+        </div>
         </div>}
         </Switch>
       </Router>

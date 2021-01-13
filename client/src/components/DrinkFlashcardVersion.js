@@ -2,15 +2,12 @@ import React, { Component, useState } from 'react';
 import axios from 'axios';
 import './Drink.css'
 const Drink = ({ drink }) => {
-    const [ isOpen, setIsOpen ] = useState(false);
-
-    const [show, setShow] = useState(false);
-
-    // COuld set liked/ Saved Boolean
+    const [seeMore, setSeeMore] = useState(false)
     const onClick = (e) => {
         e.preventDefault();
-        const saveBtn = e.target;
-       const icon = saveBtn.innerHTML;
+        console.log(e);
+        const saveBtn = document.getElementById('save');
+        const icon = saveBtn.innerHTML;
 
         axios.post('/api/drinks', drink)
             .then(res => {
@@ -20,7 +17,7 @@ const Drink = ({ drink }) => {
                     saveBtn.innerHTML = icon
                 }, 2000)
             })
-            .catch(err => console.log(err)) 
+            .catch(err => console.log(err))
     }
 
     const { name, thumbnail, ingredients, glass, instructions } = drink
@@ -31,10 +28,21 @@ const Drink = ({ drink }) => {
         )
     }
     return (
-        <>
-        <div onClick={() => setShow(!show)} className='drink__card' >
+        <div className='drink' >
+            <div onClick={() => setSeeMore(!seeMore)} className={'drink__card'} >
+                <div className={seeMore ? 'drink__card d-none' : 'drink__card'}>
                     <div className='drink__card__top'>
-                            {show ? <div>         {ingredients.map(item => {
+
+                    {!seeMore ? (
+                        <>
+                            <button id='save' onClick={onClick}> <i className="fas fa-heart"></i> </button>
+                            <img style={{ border: '1px solid white' }} src={thumbnail} alt={name} />
+                        </>
+                    )
+                    :
+                    <div className='drink__ingredients'>
+                        <h2>Ingredients</h2>
+                            {ingredients.map(item => {
                                 return <div style={{
                                     display: 'flex',
                                     flexDirection: 'column',
@@ -42,16 +50,16 @@ const Drink = ({ drink }) => {
                                 }}>
                                     <span style={{ backgroundColor: 'black', color: 'white' }}>{item.item}</span>
                                 </div>
-                            })}</div> : <img style={{ border: '1px solid white' }} src={thumbnail} alt={name} />}
+                            })}
+                        </div>
+                    }
                     </div>
-                    <div className='drink__card__footer'>
-                        <span></span>
+                    <div>
                         <h4 >{name}</h4>
-                        <i id='save' onClick={onClick} className="fas fa-heart"></i>
-
                     </div>
                 </div>
-    </>
+            </div>
+        </div>
     );
 
 };

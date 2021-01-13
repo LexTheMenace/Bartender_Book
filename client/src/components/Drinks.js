@@ -5,7 +5,7 @@ import './Drinks.css';
 
 export default function Drinks() {
 const { results, heading } = useGlobalContext();
-console.log(results);
+
     if (results.length > 1) {
         return (
             <div className='drinks'>

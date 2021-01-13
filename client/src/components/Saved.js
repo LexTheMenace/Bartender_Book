@@ -44,7 +44,7 @@ export default class Saved extends Component {
                     const { name, thumbnail, ingredients, glass, instructions, _id } = drink
     
                     return(
-                        <div key={_id} className='drinkCard' >
+                      /*   <div key={_id} className='drinkCard' >
                             <div>
                                 <h2>{name}</h2>
                                 <img style={{ width: '200px', marginTop: '50px', marginBottom: '50px'  }} src={thumbnail} alt={name} />
@@ -60,7 +60,27 @@ export default class Saved extends Component {
                                 <p style={{ margin: '50px' }}>Serve In: {glass}</p>
                                 <p style={{ margin: '50px' }}>Directions: {instructions}</p>
                              </div>
-                         </div>
+                         </div> */
+                              <div className='drink' >
+                              <div className={'drink__card'}>
+                    
+                                  <h4>{name}</h4>
+                                  <img style={{ border: '1px solid white' }} src={thumbnail} alt={name} />
+                                  <button id='remove' onClick={this.delDrink.bind(this, _id)}> </button>
+                                 
+                                  <div>
+                                <h4>Ingredients</h4>
+                                {ingredients.map(item => {
+                                    if (!item.amt){ return <div key={item._id}> {item.item} </div> } else {
+                                        return <div key={item._id}><span >{item.item}</span> : <span > {item.amt}</span></div>
+                                    }
+                                })} 
+                                <p style={{ margin: '50px' }}>Serve In: {glass}</p>
+                                <p style={{ margin: '50px' }}>Directions: {instructions}</p>
+                             </div>
+                             </div>
+                             </div> 
+ 
     )} )}
 </React.Fragment>
          )
