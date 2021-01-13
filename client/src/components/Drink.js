@@ -32,8 +32,8 @@ const Drink = ({ drink }) => {
     }
     return (
         <>
-        <div onClick={() => setShow(!show)} className='drink__card' >
-                    <div className='drink__card__top'>
+        <div  className='drink__card' >
+                    <div onClick={() => setShow(!show)} className='drink__card__top'>
                             {show ? <div>         {ingredients.map(item => {
                                 return <div style={{
                                     display: 'flex',
@@ -47,7 +47,7 @@ const Drink = ({ drink }) => {
                     <div className='drink__card__footer'>
                         <span></span>
                         <h4 >{name}</h4>
-                        <i id='save' onClick={onClick} className="fas fa-heart"></i>
+                        <i id='save' onClick={onClick} className={"fas fa-heart"}></i>
 
                     </div>
                 </div>
