@@ -7,6 +7,7 @@ import Index from './components/layout';
 import ScrollTop from './components/layout/ScrollTop'
 import { useGlobalContext } from './Store';
 import SingleDrink from './components/SingleDrink';
+import SavedDrinks from './components/SavedDrinks';
 
 function App() {
    const { legal } = useGlobalContext();
@@ -21,9 +22,9 @@ function App() {
             <Navbar />
             <div className='app'>
               <ScrollTop />
-              {/*  <Route path='/saved'>
-            <Saved />
-          </Route> */}
+         <Route path='/saved'>
+            <SavedDrinks/>
+          </Route>
             <Route path='/drink/:id'>
                 <SingleDrink/>
               </Route>

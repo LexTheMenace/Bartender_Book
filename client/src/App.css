@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Yusei Magic', sans-serif;
+  font-family: 'Newsreader', sans-serif;
   letter-spacing: 1px;
   font-size: 18px;
 }

@@ -10,7 +10,10 @@
     color: rgb(0, 0, 0);
     height: fit-content;
     width: 40vw;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 .single__view__back{
@@ -27,8 +30,6 @@
     background: white;
     color: black;
     padding: 8px;
-    display: inline;
-    text-decoration: underline;
 }
 
 img{
@@ -62,7 +63,9 @@ a:visited{
     margin-bottom: 5px;
 }
 @media only screen and (max-width:900px) {
-   
+    .single__view__back{
+        margin-top: 5px;
+    }
     .single__view__main, img{
         width: 90vw;
     }
