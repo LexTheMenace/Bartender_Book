@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const drinks = require('./routes/api/drinks')
+const cors = require('cors');
+const drinks = require('./routes/api/drinks');
 
 require('dotenv').config();
 
@@ -8,7 +9,7 @@ const app = express();
 
 // Bodyparser Middleware: Allows app to read JSON
 app.use(express.json());
-
+app.use(cors())
 app.use('/', express.static("client/build/"));
 
 //Create Mongo Database then Config

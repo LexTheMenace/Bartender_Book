@@ -15,7 +15,9 @@ justify-content: center;
     border: none;
     border-radius: 33px;
     outline-style: none;
-    padding: 0px 15px;
+    padding: 5px 15px;
     margin-top: 5px;
 }
-
+.searchBar__input:focus {
+    border: inset white 3px;
+}
