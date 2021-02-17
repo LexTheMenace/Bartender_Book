@@ -3,42 +3,37 @@ import './App.css';
 import Navbar from './components/layout/Navbar';
 import AgeVer from './components/AgeVer';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import Saved from './components/Saved';
-import { Provider } from './context';
 import Index from './components/layout';
 import ScrollTop from './components/layout/ScrollTop'
 import { useGlobalContext } from './Store';
+import SingleDrink from './components/SingleDrink';
 
 function App() {
-//  const { legal } = useGlobalContext();
-const legal = true;
+   const { legal } = useGlobalContext();
 
   return (
-    <Provider>
-      <Router>
-        <Switch>
-{ !legal ? <Route path='/'>
-  <AgeVer/>
-</Route> :
-        <div >
-        <Navbar />
-        <div className='app'>
-
-          <ScrollTop/>
-          <Route path='/mix'>
-          </Route>
-          <Route path='/saved'>
+    <Router>
+      <Switch>
+        {!legal ? <Route path='/'>
+          <AgeVer />
+        </Route> :
+          <>
+            <Navbar />
+            <div className='app'>
+              <ScrollTop />
+              {/*  <Route path='/saved'>
             <Saved />
-          </Route>
-          <Route exact path='/'>
-            <Index/>
-          </Route>
-        </div>
-        </div>}
-        </Switch>
-      </Router>
-    </Provider>
-
+          </Route> */}
+            <Route path='/drink/:id'>
+                <SingleDrink/>
+              </Route>
+              <Route exact path='/'>
+                <Index />
+              </Route>
+            </div>
+          </>}
+      </Switch>
+    </Router>
   );
 }
 

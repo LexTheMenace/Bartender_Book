@@ -7,11 +7,13 @@ const { query, handleSearch } = useGlobalContext();
     return (
         <div className='searchBar'>
                 <form className='searchBar__form' onSubmit={(e) => e.preventDefault()}>
-                    <label htmlFor='search'>Search By Liquor/ Ingredient:</label>
+                    <label htmlFor='search'>Search Cocktails By Liquor or Ingredient:</label>
                     <input 
                     type='text' 
                     name='search'
+                    id='search'
                     className='searchBar__input' 
+                    placeholder='e.g. "rum" or "mint"'
                     value={query} 
                     onChange={(e) => handleSearch(e.target.value)}/> <br/>
                 </form>

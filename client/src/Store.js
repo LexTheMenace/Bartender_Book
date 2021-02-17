@@ -3,7 +3,9 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import {
 SET_LOADING,
 SET_DRINKS,
-SEARCH_INGREDIENT
+SEARCH_INGREDIENT,
+CLEAR_DRINK,
+CURRENT_DRINK
 } from './actions';
 
 import reducer from './reducer';
@@ -12,15 +14,34 @@ const API_ENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='
 
 const initialState = {
     isLoading: true,
-    legal: false,
+    legal: getLocalStorage(),
     unfilteredRes: [],
     results: [],
-    query: 'rum',
+    query: null,
     heading: '',
-    drinkInfo: ''
+    drinkInfo: {}
 };
 
 const StoreContext = React.createContext();
+
+function getLocalStorage() {
+    const item = localStorage.getItem('legal') ? JSON.parse(localStorage.getItem('legal')) : null
+
+    // if the item doesn't exist, return false
+    if (!item) {
+        return false;
+    }
+
+    const now = new Date();
+    
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > item.expiry) {
+        // If the item is expired, delete the item from storage and return false
+        localStorage.removeItem('legal')
+        return false
+    }
+    return true
+}
 
 const makeDrink = async (id) => {
     try {
@@ -46,7 +67,7 @@ const makeDrink = async (id) => {
             { item: drink.strIngredient14, amt: drink.strMeasure14 },
             { item: drink.strIngredient15, amt: drink.strMeasure15 }
         ];
-
+      
         drink = {
             name: strDrink,
             thumbnail: strDrinkThumb,
@@ -66,7 +87,7 @@ const makeDrink = async (id) => {
 
 const Store = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-
+  
     const getDrinks = async (url) => {
          dispatch({ type: SET_LOADING }); 
         try {
@@ -87,6 +108,23 @@ const Store = ({ children }) => {
             console.log(error)
         }
     };
+    const getSingleDrink = async (url) => {
+        if(!url) dispatch({ type: CLEAR_DRINK })
+        dispatch({ type: SET_LOADING }); 
+       try {
+           const response = await fetch(url)
+           const data = await response.json();
+           const drink = await makeDrink(data.drinks[0].idDrink)
+
+        dispatch({
+               type: CURRENT_DRINK,
+               payload: drink }
+           ); 
+       } catch (error) {
+           console.log(error)
+       }
+   };
+   
     const handleSearch = (query) => {
         dispatch({ type: SEARCH_INGREDIENT, payload: query })
     };
@@ -95,13 +133,13 @@ const Store = ({ children }) => {
         getDrinks(`${API_ENDPOINT}${state.query}`)
     }, [state.query]);
 
-
     return (
         <StoreContext.Provider
             value={{
                 ...state,
                 dispatch,
-                handleSearch
+                handleSearch,
+                getSingleDrink
             }}
         >
             {children}

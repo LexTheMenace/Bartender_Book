@@ -10,14 +10,27 @@
     grid-template-columns: 1fr 1fr 1fr ;
 }
 
+.spinner_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 1440px) {
+   
+    .drinks__container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
 @media only screen and (max-width: 980px) {
    
     .drinks__container {
         grid-template-columns: 1fr 1fr ;
     }
   }
-  @media only screen and (max-width: 550px) {
-
+  
+  @media only screen and (max-width: 668px) {
     .drinks__container {
         grid-template-columns: 1fr;
     }

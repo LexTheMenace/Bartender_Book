@@ -1,18 +1,26 @@
-.drink{
-    
+.drink{  
     padding: 10px;
 }
 .drink__card {
-    background-color: rgb(206, 206, 206);
     width: 300px;
     color: black;
     overflow: none;
     height: 300px;
     overflow: hidden;
     margin: 5px;
+    border-radius: 15px;
+    background-color: white;
+}
+.drink__card:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.border_white {
+    border: solid 1px white; 
 }
 .drink__card__top {
     height: 260px;
+    width: 100%;
 }
 .drink__card__top > img {
     width: 100%;
@@ -22,6 +30,7 @@
     font-weight: 800;
     z-index: 2;
 }
+
 .drink__card__footer{
     height: 40px;
     background-color: ivory;
@@ -32,43 +41,64 @@
     align-items: center;
 
 }
+
 .drink__card__more {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
 .drink__ingredients {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-right: 5px;
     font-weight: 800;
     height: 260px;
+}
+.card__back{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        background-color: grey;
+    }
+    .card__back__ingredients{
+        background-color: black; 
+        padding: 4px;
+        color: white;  
+        margin: 2px; 
+        width: 100%;
+        border-bottom: solid white 2px;
+}
+.card__back__ingredients:first-child{
+    border-top: solid white 2px;
 
 }
 #save {
     /* position:absolute;/*  
     margin-right: 50px; */
-    padding: 8px;  
+    padding: 2px;  
     background-color: red;
-    /* background-image: linear-gradient(red, black); */
     color: white; 
     border-radius: 999px;
-    font-size: 20px;
-    border: none
-    
+    font-size: 15px;
+    border: none;
+    z-index: 100;
+    overflow-wrap: break-word;
 }
 #save:hover {
     transform: scale(1.05);
-    font-size: 24px;
+    font-size: 20px;
     border: none
 }
 
 @media only screen and (max-width: 668px) {
     .drink__card {
-        width: 250px;
-        height: 250px;
+        width: 90vw;
+        height: auto;
     }
     .drink__card__top {
-        height: 210px;
+        height: auto;
     }
     .drink__card > img {
         width: 100%;
