@@ -81,7 +81,7 @@ const SingleDrink = () => {
                         <span style={titleStyle}>Instructions:</span>{' ' + instructions}</p>
 
                 <p>Serve in a {glass.split(glass.includes('glass') ? 'glass' : 'Glass')[0] + ' Glass'}</p>
-                 <span style={{ marginTop: '10px'}}><FaHeart onClick={user ? onClick : localSave} style={{ color: 'red', background: 'none'}}/></span>
+                 {/* <span style={{ marginTop: '10px'}}><FaHeart onClick={user ? onClick : localSave} style={{ color: 'red', background: 'none'}}/></span> */}
                 </div>
                     
             </div>

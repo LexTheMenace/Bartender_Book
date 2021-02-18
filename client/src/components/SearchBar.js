@@ -15,7 +15,9 @@ const { query, handleSearch } = useGlobalContext();
                     className='searchBar__input' 
                     placeholder='e.g. "rum" or "mint"'
                     value={query} 
-                    onChange={(e) => handleSearch(e.target.value)}/> <br/>
+                    onChange={(e) => handleSearch(e.target.value)}
+                    onSubmit={(e) => handleSearch(e.target.value)}
+                    /> <br/>
                 </form>
             {/*     <form onSubmit={this.random}>
                     <h5> "Surpise Me"! </h5>
