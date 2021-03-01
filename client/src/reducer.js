@@ -2,34 +2,14 @@ import {
     SEARCH_INGREDIENT, 
     SET_DRINKS, 
     SET_LOADING, 
-    VERIFY_AGE, 
     CLEAR_DRINK,
-    CURRENT_DRINK
+    CURRENT_DRINK,
+    FILTER_ALCOHOLIC,
+    FILTER_CATEGORY
  } from "./actions";
-
-const setLegal = (val) => {
-    const now = new Date()
-    const time = (mins = 60) => {
-        return 60000 * mins
-    }
-    // `item` is an object which contains the original value
-    // as well as the time when it's supposed to expire
-    const legal = {
-        legal: val,
-        expiry: now.getTime() + time(), /* 1 hour */
-    }
-
-    localStorage.setItem('legal', JSON.stringify(legal))
-}
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case VERIFY_AGE:
-            setLegal(action.payload)
-            return {
-                ...state,
-                legal: action.payload
-            }
         case SET_LOADING:
             return {
                 ...state,
@@ -60,9 +40,28 @@ const reducer = (state, action) => {
                 ...state,
                 query: action.payload
             }
+        case FILTER_ALCOHOLIC:
+        if (action.payload.alcoholic === true) {
+          return {
+            ...state,
+            results: state.unfilteredRes.filter((drink) => drink.alcoholic),
+          }
+        }
+        if (action.payload.alcoholic === false) {
+          return {
+            ...state,
+            results: state.unfilteredRes.filter((drink) => !drink.alcoholic),
+          }
+        }
+        break;
+      case FILTER_CATEGORY:
+        return {
+          ...state,
+          results: state.unfilteredRes.filter(drink => drink.category === action.payload)
+        } 
         default:
             break;
     }
-}
+};
 
 export default reducer;

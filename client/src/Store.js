@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 
 import {
-SET_LOADING,
-SET_DRINKS,
-SEARCH_INGREDIENT,
-CLEAR_DRINK,
-CURRENT_DRINK
+    SET_LOADING,
+    SET_DRINKS,
+    SEARCH_INGREDIENT,
+    CLEAR_DRINK,
+    CURRENT_DRINK,
+    FILTER_ALCOHOLIC,
+    FILTER_CATEGORY
 } from './actions';
 
 import reducer from './reducer';
@@ -15,6 +17,7 @@ const API_ENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='
 const initialState = {
     isLoading: true,
     unfilteredRes: [],
+    memo: [],
     results: [],
     query: null,
     heading: '',
@@ -47,7 +50,7 @@ const makeDrink = async (id) => {
             { item: drink.strIngredient14, amt: drink.strMeasure14 },
             { item: drink.strIngredient15, amt: drink.strMeasure15 }
         ];
-      
+
         drink = {
             name: strDrink,
             thumbnail: strDrinkThumb,
@@ -57,19 +60,20 @@ const makeDrink = async (id) => {
             instructions: strInstructions,
             alcoholic: strAlcoholic === 'Alcoholic' ? true : false,
             category: strCategory
-        }
+        };
+
         return drink;
+
     } catch (error) {
         console.log(error);
     }
-
 }
 
 const Store = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-  
+
     const getDrinks = async (url) => {
-         dispatch({ type: SET_LOADING }); 
+        dispatch({ type: SET_LOADING });
         try {
             const response = await fetch(url)
             const data = await response.json();
@@ -80,34 +84,45 @@ const Store = ({ children }) => {
             });
             const drinks = await Promise.all(datas).then(res => res)
 
-         dispatch({
+            dispatch({
                 type: SET_DRINKS,
-                payload: drinks, heading: state.query }
-            ); 
+                payload: drinks, heading: state.query
+            }
+            );
         } catch (error) {
             console.log(error)
         }
     };
+    
     const getSingleDrink = async (url) => {
-        if(!url) dispatch({ type: CLEAR_DRINK })
-        dispatch({ type: SET_LOADING }); 
-       try {
-           const response = await fetch(url)
-           const data = await response.json();
-           const drink = await makeDrink(data.drinks[0].idDrink)
+        if (!url) dispatch({ type: CLEAR_DRINK })
+        dispatch({ type: SET_LOADING });
+        try {
+            const response = await fetch(url)
+            const data = await response.json();
+            const drink = await makeDrink(data.drinks[0].idDrink)
 
-        dispatch({
-               type: CURRENT_DRINK,
-               payload: drink }
-           ); 
-       } catch (error) {
-           console.log(error)
-       }
-   };
-   
+            dispatch({
+                type: CURRENT_DRINK,
+                payload: drink
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
     const handleSearch = (query) => {
         dispatch({ type: SEARCH_INGREDIENT, payload: query })
     };
+    const filterDrinks = (alcoholic) => {
+        dispatch({ type: FILTER_ALCOHOLIC, payload: alcoholic })
+      }
+    
+      const filterCategory = (category) => {
+        dispatch({ type: FILTER_CATEGORY, payload: category })
+      }
+    
 
     useEffect(() => {
         getDrinks(`${API_ENDPOINT}${state.query}`)
@@ -119,7 +134,9 @@ const Store = ({ children }) => {
                 ...state,
                 dispatch,
                 handleSearch,
-                getSingleDrink
+                getSingleDrink,
+                filterDrinks,
+                filterCategory
             }}
         >
             {children}

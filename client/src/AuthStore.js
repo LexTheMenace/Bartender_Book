@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-
+import React, { useContext, useReducer } from 'react';
+import reducer from './authReducer'
 const initialState = {
     legal: getLocalStorage()
 };
@@ -26,9 +26,10 @@ function getLocalStorage() {
 };
 
 const Auth = ({ children }) => {
-    const [state, setState] = useState(initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
+
     return (
-        <AuthContext.Provider value={{ ...state }}>
+        <AuthContext.Provider value={{ ...state, dispatch }}>
             {children}
         </AuthContext.Provider>
     )

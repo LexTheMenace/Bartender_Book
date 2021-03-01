@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { VERIFY_AGE } from '../actions';
-import { useGlobalContext } from '../Store';
-
+import { useAuthContext } from '../AuthStore';
 
 const AgeVer = () => {
-    const { dispatch } = useGlobalContext();
+    const { dispatch } = useAuthContext();
     const [ legal, setLegal ] = useState(false);
 
     const onChange = (e) => setLegal(!legal);

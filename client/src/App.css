@@ -18,11 +18,13 @@ body {
   justify-content: center;
   align-content: center;
 }
+
 .app{
   display: flex;
 flex-direction: column;
   justify-content: center;
 }
+
 .age-verification{
   display: flex;
   flex-direction: column;
@@ -31,9 +33,11 @@ flex-direction: column;
   margin: auto;
   margin-top: 40vh;
 }
+
 form{
   margin-top: 12px;
 }
+
 input[type='submit']{
   padding: 6px;
   background: transparent;
@@ -43,19 +47,20 @@ input[type='submit']{
   margin-top: 5px;
   border-radius: 2px;
 }
+
 input[type='submit']:hover{
   padding: 6px;
   background: white;
   border: white solid 2px;
   color: #491010;
-  font-weight: 600;
+  font-weight: 800;
 }
-
 
 ul{
   list-style: none;
   padding: 5px;
 }
+
 @media only screen and (max-width:700px) {
   .age-verification{
     width: 50vw;

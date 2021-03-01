@@ -12,6 +12,7 @@ import { useAuthContext } from './AuthStore';
 
 function App() {
   const { legal } = useAuthContext();
+  
   return (
     <Router>
       <Switch>
