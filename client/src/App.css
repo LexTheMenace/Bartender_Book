@@ -61,6 +61,27 @@ ul{
   padding: 5px;
 }
 
+/* SCROLLBAR  */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(24, 11, 11);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: darkred;
+}
+
 @media only screen and (max-width:700px) {
   .age-verification{
     width: 50vw;
