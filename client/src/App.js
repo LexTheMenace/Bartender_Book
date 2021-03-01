@@ -5,13 +5,13 @@ import AgeVer from './components/AgeVer';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Index from './components/layout';
 import ScrollTop from './components/layout/ScrollTop'
-import { useGlobalContext } from './Store';
+import { Store } from './Store';
 import SingleDrink from './components/SingleDrink';
 import SavedDrinks from './components/SavedDrinks';
+import { useAuthContext } from './AuthStore';
 
 function App() {
-   const { legal } = useGlobalContext();
-
+  const { legal } = useAuthContext();
   return (
     <Router>
       <Switch>
@@ -22,15 +22,17 @@ function App() {
             <Navbar />
             <div className='app'>
               <ScrollTop />
-         <Route path='/saved'>
-            <SavedDrinks/>
-          </Route>
-            <Route path='/drink/:id'>
-                <SingleDrink/>
-              </Route>
-              <Route exact path='/'>
-                <Index />
-              </Route>
+              <Store>
+                <Route path='/saved'>
+                  <SavedDrinks />
+                </Route>
+                <Route path='/drink/:id'>
+                  <SingleDrink />
+                </Route>
+                <Route exact path='/'>
+                  <Index />
+                </Route>
+              </Store>
             </div>
           </>}
       </Switch>

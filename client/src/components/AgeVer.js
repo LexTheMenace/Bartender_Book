@@ -26,9 +26,9 @@ const AgeVer = () => {
         return (
             <div>
                 <div className='age-verification'>
-                <h2 > Are You 21 Or Older? </h2>
                 <form  onSubmit={onSubmit}>
 
+               <label><h2 > Are You 21 Or Older? </h2></label> 
                     Yes! <input name='legal' type='checkbox' onChange={onChange} value={legal} /> <br/>
                     <input type="submit" value="Submit"></input>
                 </form>

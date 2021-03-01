@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Auth } from './AuthStore';
 import * as serviceWorker from './serviceWorker';
 import { Store } from './Store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Store>
+    <Auth>
     <App />
-    </Store>
+    </Auth>
   </React.StrictMode>,
   document.getElementById('root')
 );

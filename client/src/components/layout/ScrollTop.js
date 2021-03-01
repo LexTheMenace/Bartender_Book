@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import './ScrollToTop.css'
 import { FaArrowUp } from 'react-icons/fa'
+
 export default class ScrollToTop extends Component {
   
     state = {
