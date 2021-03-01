@@ -31,6 +31,26 @@ flex-direction: column;
   margin: auto;
   margin-top: 40vh;
 }
+form{
+  margin-top: 12px;
+}
+input[type='submit']{
+  padding: 6px;
+  background: transparent;
+  border: white solid 2px;
+  color: white;
+  font-weight: 600;
+  margin-top: 5px;
+  border-radius: 2px;
+}
+input[type='submit']:hover{
+  padding: 6px;
+  background: white;
+  border: white solid 2px;
+  color: #491010;
+  font-weight: 600;
+}
+
 
 ul{
   list-style: none;
