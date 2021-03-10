@@ -5,11 +5,17 @@ import { Auth } from './AuthStore';
 import * as serviceWorker from './serviceWorker';
 import { Store } from './Store';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Auth>
+const Index = () => {
+  return (
+     <Auth>
     <App />
     </Auth>
+  )
+}
+
+ReactDOM.render(
+  <React.StrictMode>
+   <Index/>
   </React.StrictMode>,
   document.getElementById('root')
 );

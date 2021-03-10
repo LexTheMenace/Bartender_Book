@@ -1,7 +1,7 @@
 .header{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     height: 40px;
@@ -25,9 +25,16 @@
 .header__logo > a > h4 {
     margin-left: 20px;
 }
-.header__options {
+
+ .header__links{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5px;
+} 
+.header__options {
     flex: .33;
+    display: flex;
     justify-content: space-around;
     align-items: center;
 }
