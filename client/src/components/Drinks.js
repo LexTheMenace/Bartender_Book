@@ -13,14 +13,14 @@ export default function Drinks() {
                 <div className='drinks'>
                     <h4>{heading}</h4>
                     <div className='drinks__container'>
-                        {results.map(drink => <Drink key={drink.drinkId} drink={drink} />)}
+                        {results.map(drink => <Drink key={drink.drink_id} drink={drink} />)}
                     </div>
                 </div> : 
                 unfilteredRes.length > 1 ?
                     <div className='drinks'>
                         <h4>{heading}</h4>
                         <div className='drinks__container'>
-                            {unfilteredRes.map(drink => <Drink key={drink.drinkId} drink={drink} />)}
+                            {unfilteredRes.map(drink => <Drink key={drink.drink_id} drink={drink} />)}
                         </div>
                     </div> :
                     <div className='spinner_div'>

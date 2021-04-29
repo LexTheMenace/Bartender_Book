@@ -14,25 +14,14 @@ function App() {
 
   return (
     <Router>
+      <Navbar />
       <Switch>
-        {!legal ? <Route path='/'>
-          <AgeVer />
-        </Route> :
-          <>
-            <Navbar />
             <div className='app'>
               <ScrollTop />
-         <Route path='/saved'>
-            <SavedDrinks/>
-          </Route>
-            <Route path='/drink/:id'>
-                <SingleDrink/>
-              </Route>
-              <Route exact path='/'>
-                <Index />
-              </Route>
+              <Route path='/saved' component={SavedDrinks}/>
+              <Route path='/drink/:id' component={SingleDrink} />
+              <Route exact path='/' render={() => !legal ? <AgeVer/> : <Index/>} />
             </div>
-          </>}
       </Switch>
     </Router>
   );

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 
 import {
-SET_LOADING,
-SET_DRINKS,
-SEARCH_INGREDIENT,
-CLEAR_DRINK,
-CURRENT_DRINK
+    SET_LOADING,
+    SET_DRINKS,
+    SEARCH_INGREDIENT,
+    CLEAR_DRINK,
+    CURRENT_DRINK
 } from './actions';
 
 import reducer from './reducer';
@@ -17,7 +17,7 @@ const initialState = {
     legal: getLocalStorage(),
     unfilteredRes: [],
     results: [],
-    query: null,
+    query: '',
     heading: '',
     drinkInfo: {}
 };
@@ -33,7 +33,7 @@ function getLocalStorage() {
     }
 
     const now = new Date();
-    
+
     // compare the expiry time of the item with the current time
     if (now.getTime() > item.expiry) {
         // If the item is expired, delete the item from storage and return false
@@ -67,7 +67,7 @@ const makeDrink = async (id) => {
             { item: drink.strIngredient14, amt: drink.strMeasure14 },
             { item: drink.strIngredient15, amt: drink.strMeasure15 }
         ];
-      
+
         drink = {
             name: strDrink,
             thumbnail: strDrinkThumb,
@@ -87,44 +87,46 @@ const makeDrink = async (id) => {
 
 const Store = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-  
+
     const getDrinks = async (url) => {
-         dispatch({ type: SET_LOADING }); 
+        dispatch({ type: SET_LOADING });
         try {
-            const response = await fetch(url)
+            const response = await fetch(url);
             const data = await response.json();
 
             const datas = await data.drinks.map(async ({ idDrink }) => {
-                const drink = await makeDrink(idDrink)
+                const drink = await makeDrink(idDrink);
                 return drink;
             });
             const drinks = await Promise.all(datas).then(res => res)
 
-         dispatch({
+            dispatch({
                 type: SET_DRINKS,
-                payload: drinks, heading: state.query }
-            ); 
+                payload: drinks, heading: state.query
+            }
+            );
         } catch (error) {
             console.log(error)
         }
     };
     const getSingleDrink = async (url) => {
-        if(!url) dispatch({ type: CLEAR_DRINK })
-        dispatch({ type: SET_LOADING }); 
-       try {
-           const response = await fetch(url)
-           const data = await response.json();
-           const drink = await makeDrink(data.drinks[0].idDrink)
+        if (!url) dispatch({ type: CLEAR_DRINK })
+        dispatch({ type: SET_LOADING });
+        try {
+            const response = await fetch(url)
+            const data = await response.json();
+            const drink = await makeDrink(data.drinks[0].idDrink)
 
-        dispatch({
-               type: CURRENT_DRINK,
-               payload: drink }
-           ); 
-       } catch (error) {
-           console.log(error)
-       }
-   };
-   
+            dispatch({
+                type: CURRENT_DRINK,
+                payload: drink
+            }
+            );
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
     const handleSearch = (query) => {
         dispatch({ type: SEARCH_INGREDIENT, payload: query })
     };

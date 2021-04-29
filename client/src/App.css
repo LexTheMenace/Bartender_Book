@@ -8,9 +8,12 @@
   font-size: 18px;
 }
 
-body {
+html,body,#root{
   width: 100vw;
   height: 100vh;
+}
+
+body {
   background: rgb(73, 16, 16);
   color: white;
   margin: auto;
@@ -20,9 +23,10 @@ body {
 }
 .app{
   display: flex;
-flex-direction: column;
+  flex-direction: column;
   justify-content: center;
 }
+
 .age-verification{
   display: flex;
   flex-direction: column;
@@ -42,3 +46,47 @@ ul{
   }
 
 }
+
+.btn-base{
+  display: inline-block;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+  padding: 13px 50px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+  letter-spacing: .6px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.btn-ghost-secondary {
+  color: #af1685;
+  background-color: transparent;
+  border: 1px solid #af1685;
+}
+.btn-ghost-secondary:hover {
+  color: #fff;
+  box-shadow: 0 3px 15px rgb(175 22 133 / 60%);
+  border-color: #af1685;
+}
+
+.btn.focus, .btn:focus, .btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
