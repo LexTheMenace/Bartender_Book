@@ -5,9 +5,7 @@ import {
     SET_DRINKS,
     SEARCH_INGREDIENT,
     CLEAR_DRINK,
-    CURRENT_DRINK,
-    FILTER_ALCOHOLIC,
-    FILTER_CATEGORY
+    CURRENT_DRINK
 } from './actions';
 
 import reducer from './reducer';
@@ -15,11 +13,9 @@ import reducer from './reducer';
 const API_ENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 
 const initialState = {
-    isLoading: true,
-    unfilteredRes: [],
-    memo: [],
+    isLoading: false,
     results: [],
-    query: null,
+    query: '',
     heading: '',
     drinkInfo: {}
 };
@@ -60,13 +56,12 @@ const makeDrink = async (id) => {
             instructions: strInstructions,
             alcoholic: strAlcoholic === 'Alcoholic' ? true : false,
             category: strCategory
-        };
-
+        }
         return drink;
-
     } catch (error) {
         console.log(error);
     }
+
 }
 
 const Store = ({ children }) => {
@@ -75,11 +70,11 @@ const Store = ({ children }) => {
     const getDrinks = async (url) => {
         dispatch({ type: SET_LOADING });
         try {
-            const response = await fetch(url)
+            const response = await fetch(url);
             const data = await response.json();
 
             const datas = await data.drinks.map(async ({ idDrink }) => {
-                const drink = await makeDrink(idDrink)
+                const drink = await makeDrink(idDrink);
                 return drink;
             });
             const drinks = await Promise.all(datas).then(res => res)
@@ -90,39 +85,24 @@ const Store = ({ children }) => {
             }
             );
         } catch (error) {
-            console.log(error)
-        }
+            const err = error;
+            console.log(error);
+        };
     };
     
-    const getSingleDrink = async (url) => {
-        if (!url) dispatch({ type: CLEAR_DRINK })
+    const getSingleDrink = async (id) => {
+        if (!id) dispatch({ type: CLEAR_DRINK })
         dispatch({ type: SET_LOADING });
-        try {
-            const response = await fetch(url)
-            const data = await response.json();
-            const drink = await makeDrink(data.drinks[0].idDrink)
-
-            dispatch({
+        dispatch({
                 type: CURRENT_DRINK,
-                payload: drink
-            });
-
-        } catch (error) {
-            console.log(error)
-        }
+                payload: id
+            })
+          
     };
 
     const handleSearch = (query) => {
         dispatch({ type: SEARCH_INGREDIENT, payload: query })
     };
-    const filterDrinks = (alcoholic) => {
-        dispatch({ type: FILTER_ALCOHOLIC, payload: alcoholic })
-      }
-    
-      const filterCategory = (category) => {
-        dispatch({ type: FILTER_CATEGORY, payload: category })
-      }
-    
 
     useEffect(() => {
         getDrinks(`${API_ENDPOINT}${state.query}`)
@@ -134,9 +114,7 @@ const Store = ({ children }) => {
                 ...state,
                 dispatch,
                 handleSearch,
-                getSingleDrink,
-                filterDrinks,
-                filterCategory
+                getSingleDrink
             }}
         >
             {children}
@@ -145,7 +123,7 @@ const Store = ({ children }) => {
 };
 
 // make sure use
-export const useGlobalContext = () => {
+export const useDrinkContext = () => {
     return useContext(StoreContext);
 };
 

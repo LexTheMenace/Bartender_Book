@@ -1,49 +1,70 @@
+* {
+    list-style: none;
+}
 .single__view{
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
+    justify-content: center;                                                                                               
     align-items: center;
-    
+    background: rgba(0, 0, 0, 0.788);
+    border-radius: 20px;   
+}
+.close-modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* padding-left: 90vw; */
+    height: 20px;
+    font-size: 48px;
+    margin: 20px;
+    color: rgb(255, 255, 255);
 }
 .single__view__main{
+    padding: 15px;
     background: white;
     color: rgb(0, 0, 0);
-    height: fit-content;
-    width: 40vw;
+    max-height: 100%;
+    height: max-content;
+    width: 60vw;
+    max-width: 450px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: 50px;
 }
-.single__view__back{
-    margin: 15px;
-    background: white;
-    color: black;
-    padding: 10px;
-}
-.single__view__back:hover{
-    transform: scale(1.05);
-    background-color: rgb(219, 219, 219);
-}
+
 .single__view__title{
-    background: white;
+    /* background: white; */
     color: black;
     padding: 8px;
 }
 
 img{
-    width: 40vw;
+    width: 60vw;
     height: auto;
+    max-height: 450px;
+    max-width: 450px;
 }
+
 a{
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
+
 a:visited{
     color: rgba(175, 0, 0, 0.815);
     font-style: italic;
 }
+
 .single__view__info{
     display: flex; 
     flex-direction: column; 
@@ -52,6 +73,7 @@ a:visited{
     padding: 5px;
     padding-bottom: 15px;
 }
+
 .ingredient__list{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -62,7 +84,7 @@ a:visited{
 .mb-5{
     margin-bottom: 5px;
 }
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:600px) {
     .single__view__back{
         margin-top: 5px;
     }

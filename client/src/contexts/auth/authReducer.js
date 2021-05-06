@@ -1,6 +1,6 @@
 import {  
     VERIFY_AGE
- } from "./actions";
+ } from "../drink/actions";
 
 const setLegal = (val) => {
     const now = new Date()

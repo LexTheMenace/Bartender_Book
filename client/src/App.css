@@ -1,90 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap');
+:root{
+  --background: black;
+  --background-font-color: white;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Newsreader', sans-serif;
-  letter-spacing: 1px;
-  font-size: 18px;
+}
+html,body, #root{
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  background: rgb(73, 16, 16);
-  color: white;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  font-family: 'Open Sans Condensed';
+  /* padding: 20px 40px; */
+  background-color:var(--background); 
+  color: var(--background-font-color);
+  overflow: scroll;
 }
 
-.app{
-  display: flex;
-flex-direction: column;
-  justify-content: center;
+a {
+  text-decoration: none;
+  color: black;
 }
 
-.age-verification{
+.page{
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+.age-ver{
+  max-height: 600px;
+  max-width: 450px;
+  max-height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items:center;
+  /* position: absolute; */
   margin: auto;
-  margin-top: 40vh;
 }
 
-form{
-  margin-top: 12px;
+.button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-input[type='submit']{
-  padding: 6px;
-  background: transparent;
-  border: white solid 2px;
-  color: white;
+.button-container > button{
+  margin: 2px;
+  padding: 14px 35px;
   font-weight: 600;
-  margin-top: 5px;
-  border-radius: 2px;
+  font-size: large;
+  border: solid white 3px;
+  background-color: var(--background);
+  color: var(--background-font-color);
+  letter-spacing: .2em;
 }
 
-input[type='submit']:hover{
-  padding: 6px;
-  background: white;
-  border: white solid 2px;
-  color: #491010;
-  font-weight: 800;
+.button-container > button:hover{
+  transform: scale(.98);
+  color: black;
+  background-color: white;
 }
 
-ul{
-  list-style: none;
-  padding: 5px;
+.button-container > button:nth-child(1):hover{
+  border: solid white 3px;
+  background-color: var(--background);
+  color: var(--background-font-color);
 }
 
-/* SCROLLBAR  */
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: darkred;
-}
-
-@media only screen and (max-width:700px) {
-  .age-verification{
-    width: 50vw;
-  }
-
+.button-container > button:nth-child(1){
+  color: black;
+  background-color: white;
 }

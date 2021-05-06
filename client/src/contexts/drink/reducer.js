@@ -22,18 +22,29 @@ const reducer = (state, action) => {
             drinkInfo: {}
         }
         case SET_DRINKS: 
-        return {
+         const newState = action.payload == undefined ?
+         {
+          ...state,
+          isLoading: false,
+          results: [],
+          unfilteredRes: [],
+          heading: `No results found for '${state.query}`
+        } :  {
             ...state,
             isLoading: false,
             results: action.payload,
             unfilteredRes: action.payload,
             heading: `Search results for "${action.heading}"`
         }
+        console.log(newState);
+        return {...newState}
         case CURRENT_DRINK: 
+        console.log(action);
+
         return {
             ...state,
             isLoading: false,
-            drinkInfo: action.payload
+            drinkInfo: state.results.filter(drink => action.payload === drink.drink_id)
         }
         case SEARCH_INGREDIENT:
             return {

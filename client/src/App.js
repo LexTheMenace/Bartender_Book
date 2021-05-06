@@ -1,20 +1,19 @@
 import React from 'react';
 import './App.css';
-import AgeVer from './components/AgeVer';
-import { useAuthContext } from './AuthStore';
-import Routes from './Router';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { useAuthContext } from './contexts/auth/AuthStore';
+import AgeVerificationPage from './pages/AgeVerPage/age-ver.component';
+import MainPage from './pages/MainPage/main-page.compnent';
 
-function App() {
-  const { legal } = useAuthContext();
-  
+
+const App = () => {
+   const { legal } = useAuthContext();
   return (
-    <div>
-{!legal ?
-          <AgeVer />
-         :
-         <Routes/>
-    }
-          </div>
+    <Router>
+      <Switch>
+        <Route exact path='/' render={() => !legal ? <AgeVerificationPage /> : <MainPage />} />
+      </Switch>
+    </Router>
   );
 }
 
