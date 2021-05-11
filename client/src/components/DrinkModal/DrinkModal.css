@@ -14,7 +14,7 @@
     align-items: center;
     background: rgba(0, 0, 0, 0.888);
     /* border-radius: 20px;   */
-    overflow: hidden; 
+    /* overflow: hidden;  */
 }
 .close-modal{
     position: absolute;
