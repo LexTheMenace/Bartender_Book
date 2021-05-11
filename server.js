@@ -13,7 +13,7 @@ app.use(cors())
 app.use('/', express.static("client/build/"));
 
 //Create Mongo Database then Config
-const db = process.env.MONGODB_URI 
+const db = process.env.MONGODB_URI;
 
 //Connect to Mongo
 mongoose.connect(db)
@@ -26,4 +26,4 @@ app.use('/api/drinks', drinks);
 
  const PORT = process.env.PORT || 5000;
 
- app.listen(PORT, () => console.log(`Server Running at http://localhost:${PORT}`))
+ app.listen(PORT, () => console.log(`Server Running at http://localhost:${PORT}`));

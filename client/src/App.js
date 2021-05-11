@@ -12,6 +12,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path='/' render={() => !legal ? <AgeVerificationPage /> : <MainPage />} />
+
       </Switch>
     </Router>
   );
