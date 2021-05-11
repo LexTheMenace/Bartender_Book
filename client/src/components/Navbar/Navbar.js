@@ -1,26 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { useDrinkContext } from '../../contexts/drink/Store';
+import SearchInput from '../SearchInput/search-input.component';
 import './navbar.css';
 
-export default function Navbar() {
-    const { query, handleSearch } = useDrinkContext();
-
+export default function Navbar({noSearch}) {
     return (
         <header className='header' >
-            <h3>Bartender Book</h3>
-                <form className='searchBar__form' onSubmit={(e) => e.preventDefault()}>
-                    {/* <label htmlFor='search'>Search Cocktails By Liquor or Ingredient:</label> */}
-                    <input 
-                    type='text' 
-                    name='search'
-                    id='search'
-                    className='searchBar__input' 
-                    placeholder='Search Ingredient: "rum" or "mint"'
-                    value={query ? query : ''} 
-                    onChange={(e) => handleSearch(e.target.value)}
-                    />
-                </form>
-        </header> )
+            <Link to='/'><h3 style={{color: 'white'}}>Bartender Book</h3></Link>
+            {!noSearch && <SearchInput/> }
+            {!noSearch && <Link to='/saved' style={{ margin: '5px', paddingRight: '15px'}}>Saved</Link>}
+        </header> 
+        )
 };
 

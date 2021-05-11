@@ -5,12 +5,17 @@ import './grid.styles.css';
 
 const Grid = ({ setModalOpen, 
     setCurrentDrink,
-scroll }) => {
+scroll, drinks }) => {
     const { results } = useDrinkContext();
 
     return (
         <div className='grid' style={{overflow: scroll && 'hidden'}} >
-            {results.map(drink => <Drink setCurrentDrink={setCurrentDrink} drink={drink} setModalOpen={setModalOpen}/> )}
+            {
+            !drinks ?
+            results.map(drink => <Drink setCurrentDrink={setCurrentDrink} drink={drink} setModalOpen={setModalOpen}/> ) :
+            drinks.map(drink => <Drink setCurrentDrink={setCurrentDrink} drink={drink} setModalOpen={setModalOpen}/> )
+            }
+
         </div>
     )
 };

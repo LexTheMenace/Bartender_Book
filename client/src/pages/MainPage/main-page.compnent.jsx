@@ -6,8 +6,8 @@ import ScrollTop from '../../components/ScrollToTop/ScrollTop';
 import DrinkModal from '../../components/DrinkModal/DrinkModal';
 
 const MainPage = () => {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [currentDrink, setCurrentDrink] = useState(null);
+    const [ modalOpen, setModalOpen ] = useState(false);
+    const [ currentDrink, setCurrentDrink ] = useState(null);
 
     return (
         <div className='page'>
