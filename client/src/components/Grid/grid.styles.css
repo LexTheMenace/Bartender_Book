@@ -5,6 +5,8 @@
     height: 95%;
     align-items: center;
     justify-content: center;
+    justify-items: center;
+grid-auto-flow: dense;
 }
 
 .drink_card{

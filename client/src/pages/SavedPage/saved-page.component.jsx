@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Grid from '../../components/Grid/grid.component';
 import Navbar from '../../components/Navbar/Navbar';
 import ScrollTop from '../../components/ScrollToTop/ScrollTop';
@@ -15,12 +15,16 @@ export const SavedPage = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [currentDrink, setCurrentDrink] = useState(null);
 
+    useEffect(() => {
+        localStorage.setItem('saved-drinks', JSON.stringify(savedDrinks))
+    }, [savedDrinks]);
+
     return (
         <div className='page'>
             <Store>
                 <Navbar noSearch={true}/>
                 <ScrollTop />
-                <Grid drinks={savedDrinks.reverse()} scroll={modalOpen} setCurrentDrink={setCurrentDrink} setModalOpen={setModalOpen} savedDrinks={savedDrinks} />
+                <Grid setSavedDrinks={setSavedDrinks} drinks={savedDrinks} scroll={modalOpen} setCurrentDrink={setCurrentDrink} setModalOpen={setModalOpen} savedDrinks={savedDrinks} />
                 {modalOpen && <DrinkModal setModalOpen={setModalOpen} drink={currentDrink} />}
             </Store>
         </div>

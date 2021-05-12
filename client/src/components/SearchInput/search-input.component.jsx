@@ -11,7 +11,7 @@ const SearchInput = () => {
         name='search'
         id='search'
         className='searchBar__input' 
-        placeholder='Search Ingredient: "rum" or "mint"'
+        placeholder='Enter Ingredient: "rum" or "mint"'
         value={query ? query : ''} 
         onChange={(e) => handleSearch(e.target.value)}
         />

@@ -1,13 +1,13 @@
 import React from 'react'
 import { VERIFY_AGE } from '../../contexts/drink/actions'
 import { useAuthContext } from '../../contexts/auth/AuthStore';
-
+import './age-ver.styles.css';
 const AgeVerificationPage = () => {
     const { dispatch } = useAuthContext();
 
     return (
         <div className='age-ver page'>
-            <h2>Are You Old Enough To Drink ( Age 21 or over ) ?  </h2>
+            <h2 style={{margin: '10px'}}>Are You Old Enough To Drink ( Age 21 or over ) ?  </h2>
             <div id='underage' style={{ display: 'none', zIndex:'10' }}>
                     <h1 id='alert'> Sorry! You aren't old enough to drink!
                     Redirecting you...

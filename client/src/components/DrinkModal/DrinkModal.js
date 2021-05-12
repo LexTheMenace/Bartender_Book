@@ -26,12 +26,15 @@ const DrinkModal = ({ drink, setModalOpen }) => {
     const user = null;
     const localSave = (e) => {
         e.preventDefault();
-        const saveBtn = e.target;
+        const saveBtn = e.target;.0
         const icon = saveBtn.innerHTML;
         const savedDrinks = JSON.parse(localStorage.getItem('saved-drinks')) || [];
-        console.log(savedDrinks);
         savedDrinks.push(drink);
         localStorage.setItem('saved-drinks', JSON.stringify(savedDrinks))
+        saveBtn.innerHTML = 'Saved!'
+        setTimeout(function () {
+            saveBtn.innerHTML = icon
+        }, 2000)
     }
 
     const { name, ingredients, thumbnail, instructions, glass, category } = drink;
@@ -49,7 +52,7 @@ const DrinkModal = ({ drink, setModalOpen }) => {
     
     return (
         <div className='single__view' id='drink-modal'>
-<span className='close-modal'  onClick={() => setModalOpen(false)}>X</span>
+<span className='close-modal'  onClick={() => setModalOpen(false)}><span style={{color: 'white'}}>close </span>&#10007;</span>
 
             {/* <Link to='/'><h3 className='single__view__back'>Back to Results</h3></Link> */}
             <div className='single__view__main' onClick={(e) => setModalOpen(true)}>
