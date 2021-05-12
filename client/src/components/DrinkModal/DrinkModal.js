@@ -26,7 +26,7 @@ const DrinkModal = ({ drink, setModalOpen }) => {
     const user = null;
     const localSave = (e) => {
         e.preventDefault();
-        const saveBtn = e.target;.0
+        const saveBtn = e.target;
         const icon = saveBtn.innerHTML;
         const savedDrinks = JSON.parse(localStorage.getItem('saved-drinks')) || [];
         savedDrinks.push(drink);
