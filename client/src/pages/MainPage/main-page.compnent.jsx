@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Grid from '../../components/Grid/grid.component';
 import Navbar from '../../components/Navbar/Navbar';
 import { Store } from '../../contexts/drink/Store';
-import ScrollTop from '../../components/ScrollToTop/ScrollTop';
 import DrinkModal from '../../components/DrinkModal/DrinkModal';
 
 const MainPage = () => {
@@ -13,9 +12,8 @@ const MainPage = () => {
         <div className='page'>
             <Store>
                 <Navbar />
-                <ScrollTop />
                 <Grid scroll={modalOpen} setCurrentDrink={setCurrentDrink} setModalOpen={setModalOpen} />
-                {modalOpen && <DrinkModal setModalOpen={setModalOpen} drink={currentDrink} />}
+                {modalOpen && (<DrinkModal open={modalOpen} setModalOpen={setModalOpen} drink={currentDrink} />)}
             </Store>
         </div>
     );

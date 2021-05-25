@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+
 .header{
     position: sticky;
+    background-color: black;
     top: 0;
     left: 0;
     width: 100%;
@@ -7,15 +10,27 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    font-family:  'Pattaya', sans-serif;
+    font-size: 20px;
+    z-index: 99;
+    padding: 5px;
+    letter-spacing: .04em;
+    /* box-shadow: 0px 2px 3px 0px white; */
 }
 
-.searchBar__form > input{
-    height: 40px;
+#search{
+    flex: .7;
+    height: 100%;
+    margin: 5px;
+    /* height: 40px; */
     background-color: black;
     color: white;
     font-size: large;
-    width: 60vw;
+    width: 100%;
     border-radius: 15px;
     padding: 0px 5px;
 }
 
+#root > div.page > header > a:nth-child(3) > svg:hover{
+    color: red;
+}

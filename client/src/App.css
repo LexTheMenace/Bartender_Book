@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 :root{
   --background: black;
   --background-font-color: white;
+  --primary-font: 'Pattaya', sans-serif;
+  --secondary-font: 'Roboto', sans-serif;
 }
 
 * {
@@ -9,16 +13,16 @@
   padding: 0;
 }
 html,body, #root{
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 }
 
 body {
-  font-family: 'Open Sans Condensed';
-  /* padding: 20px 40px; */
+  font-family: var(--secondary-font);
   background-color:var(--background); 
   color: var(--background-font-color);
   overflow: auto;
+  overflow-x: hidden;
 }
 
 a {
@@ -29,8 +33,7 @@ a {
 .page{
   height: 100%;
   width: 100%;
-  padding: 10px;
-  overflow: auto;
+  /* overflow: auto; */
 }
 .age-ver{
   display: flex;

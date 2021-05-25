@@ -5,7 +5,6 @@ const SearchInput = () => {
     const { query, handleSearch } = useDrinkContext();
 
     return (
-        <form className='searchBar__form' onSubmit={(e) => e.preventDefault()}>
 <input 
         type='text' 
         name='search'
@@ -15,7 +14,7 @@ const SearchInput = () => {
         value={query ? query : ''} 
         onChange={(e) => handleSearch(e.target.value)}
         />
-    </form>
+
     )
 }
 

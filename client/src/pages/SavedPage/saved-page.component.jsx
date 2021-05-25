@@ -23,7 +23,10 @@ export const SavedPage = () => {
         <div className='page'>
             <Store>
                 <Navbar noSearch={true}/>
-                <ScrollTop />
+                {/* <ScrollTop /> */}
+                <div style={{ marginTop: '7px',display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <h1 >Your Saved Drinks</h1>
+                </div>
                 <Grid setSavedDrinks={setSavedDrinks} drinks={savedDrinks} scroll={modalOpen} setCurrentDrink={setCurrentDrink} setModalOpen={setModalOpen} savedDrinks={savedDrinks} />
                 {modalOpen && <DrinkModal setModalOpen={setModalOpen} drink={currentDrink} />}
             </Store>

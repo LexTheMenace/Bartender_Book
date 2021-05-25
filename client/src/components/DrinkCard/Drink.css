@@ -10,26 +10,28 @@
 
 .drink__card {
     width: 300px !important;
-    color: black;
     height: 300px !important;
+    color: black;
     overflow: hidden;
     margin: 5px;
     border: none;
     border-radius: 7px;
-    background-color: white;
-} 
-.drink__card:hover{
-    transform: scale(1.005);
-    cursor: pointer;
-    border: none;
-    outline: none;
+    opacity: 1;
 }
-/* .border_white {
-    border: solid 1px white; 
-} */
+
+.drink__card:hover{
+    cursor: pointer;
+    opacity: .9;
+}
+
+.drink__card:hover > .drink__card__top > img{
+    transform: scale(1.1);
+    transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+}
 .drink__card__top {
     height: 260px;
     width: 100%;
+    overflow: hidden;
 }
 .drink__card__top > img {
     width: 100%;
@@ -45,7 +47,7 @@
     height: 40px;
     width: 100%;
     background-color: ivory;
-    z-index: 99;
+    z-index: 199;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
