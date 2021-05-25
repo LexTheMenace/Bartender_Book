@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import './DrinkModal.css';
 
-const DrinkModal = ({ drink, setModalOpen }) => {
+const DrinkModal = ({ drink, setModalOpen, saved }) => {
     
     useEffect(() => {
         
@@ -46,11 +46,10 @@ const DrinkModal = ({ drink, setModalOpen }) => {
 
     const localSave = (e) => {
         e.preventDefault();
-
+       
         const saveDiv = document.querySelector('#save-div');
         const savedDrinks = JSON.parse(localStorage.getItem('saved-drinks')) || [];
-        console.log(savedDrinks);
-        console.log(savedDrinks.filter(({drink_id}) => drink_id === drink.drink_id));
+
         if(savedDrinks.filter(({drink_id}) => drink_id === drink.drink_id).length){
 
             saveDiv.innerHTML = `You've already saved ${drink.name}!`
@@ -106,7 +105,7 @@ const DrinkModal = ({ drink, setModalOpen }) => {
                         <span style={titleStyle}>Instructions:</span>{' ' + instructions}</p>
 
                 <p>Serve in a {glass.toLowerCase().split(glass.includes('glass') ? 'glass' : 'Glass')[0] + ' glass.'}</p>
-                 <span id='save-div' style={{ 
+           {!saved && <span id='save-div' style={{ 
                      marginTop: '10px', 
                      display: 'flex', 
                      flexDirection: 'column', 
@@ -117,7 +116,7 @@ const DrinkModal = ({ drink, setModalOpen }) => {
                              background: 'none', 
                              cursor: 'pointer', 
                              display: 'block' 
-                              }}/>{/* SAVE */}</span>
+                              }}/>{/* SAVE */}</span>}
                 </div>
                     
             </div>

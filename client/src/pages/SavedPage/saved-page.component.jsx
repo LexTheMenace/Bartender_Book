@@ -25,10 +25,10 @@ export const SavedPage = () => {
                 <Navbar noSearch={true}/>
                 {/* <ScrollTop /> */}
                 <div style={{ marginTop: '7px',display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                <h1 >Your Saved Drinks</h1>
+                <h1 style={{borderBottom: 'solid 1px white'}} >Your Saved Drinks</h1>
                 </div>
                 <Grid setSavedDrinks={setSavedDrinks} drinks={savedDrinks} scroll={modalOpen} setCurrentDrink={setCurrentDrink} setModalOpen={setModalOpen} savedDrinks={savedDrinks} />
-                {modalOpen && <DrinkModal setModalOpen={setModalOpen} drink={currentDrink} />}
+                {modalOpen && <DrinkModal saved={true} setModalOpen={setModalOpen} drink={currentDrink} />}
             </Store>
         </div>
     );
